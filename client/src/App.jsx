@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Home from "./pages/home";
 import "./App.css";
 
 function App() {
   return (
-    <div className="bg-black text-white min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">EntreSkill Hub</h1>
-    </div>
+    <>
+    <Home />
+    </>
   );
 }
 
