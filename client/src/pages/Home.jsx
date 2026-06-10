@@ -13,7 +13,7 @@ function Home() {
           turn your skills into successful ventures.
         </p>
 
-        <div className="mt-8 flex gap-4">
+        <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <button className=" bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
             Get Started
           </button>
