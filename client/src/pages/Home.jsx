@@ -4,7 +4,7 @@ function Home() {
       {/* home page content goes here  hero section */}
 
       <section className="flex flex-col justify-center items-center main-bg h-screen px-4">
-        <h1 className="text-5xl md:text-6xl font-bold text-blue-700">
+        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-blue-700">
           Transform Skill into Startups
         </h1>
 
