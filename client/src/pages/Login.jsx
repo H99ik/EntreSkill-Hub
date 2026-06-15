@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 function login() {
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center items-center px-4">
@@ -34,7 +36,9 @@ function login() {
 
         <p className="text-center mt-6 text-gray-600">
           Don't have an account?{" "}
-          <span className="text-blue-600 cursor-pointer">Register</span>
+          <Link to="/register" className="text-blue-600 hover:underline">
+            Register
+          </Link>
         </p>
       </div>
     </div>
