@@ -1,4 +1,4 @@
-import User from "../model/UserModel.js";
+import User from "../models/UserModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -75,5 +75,14 @@ export const loginuser = async (req, res) => {
     res.status(500).json({
       message: error.message,
     });
+  }
+};
+
+//get user profile
+export const getProfile = async (req, res) => {
+  try {
+    res.status(200).json(req.user);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
