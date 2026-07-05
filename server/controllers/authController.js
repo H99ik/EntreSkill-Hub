@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 // Register User
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     const userExists = await User.findOne({ email });
 
@@ -17,10 +17,14 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Define allowed roles
+    const allowedRoles = ["entrepreneur", "mentor", "admin"];
+
     const user = await User.create({
       name,
       email,
       password: hashedPassword,
+      role: allowedRoles.includes(role) ? role : "entrepreneur",
     });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
@@ -31,6 +35,7 @@ export const registerUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      role: user.role,
       token,
     });
   } catch (error) {
@@ -41,7 +46,7 @@ export const registerUser = async (req, res) => {
 };
 
 //login User
-export const loginuser = async (req, res) => {
+export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -69,6 +74,7 @@ export const loginuser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      role: user.role,
       token,
     });
   } catch (error) {
