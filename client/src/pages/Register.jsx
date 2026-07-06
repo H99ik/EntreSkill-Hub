@@ -1,58 +1,127 @@
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import { registerUser } from "../services/authService";
+import AuthLayout from "../components/AuthLayout";
+import InputField from "../components/InputField";
+import RoleSelector from "../components/RoleSelector";
+import { FaUser, FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
-function register() {
+function Register() {
+  // State variables for form inputs
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("entrepreneur");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+
+  // useNavigate hook for navigation after successful registration
+  const navigate = useNavigate();
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!name || !email || !password || !confirmPassword) {
+      return toast.error("Please fill in all fields");
+    }
+
+    if (password !== confirmPassword) {
+      return toast.error("Passwords do not match");
+    }
+
+    try {
+      setLoading(true);
+      const data = await registerUser({ name, email, password, role });
+
+      localStorage.setItem("userInfo", JSON.stringify(data));
+
+      toast.success("Registration successful!");
+
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Registration failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">
-          Register
-        </h1>
+    <AuthLayout
+      title="Create Account"
+      subtitle="Start your entrepreneurial journey with EntreSkill Hub."
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <InputField
+          label="Full Name"
+          type="text"
+          placeholder="Enter your full name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          icon={FaUser}
+        />
 
-        <form className="space-y-4">
-          <div>
-            <label className="block text-gray-700">Name</label>
-            <input
-              type="text"
-              placeholder="Enter your name"
-              className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        <InputField
+          label="Email Address"
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          icon={MdEmail}
+        />
 
-          <div>
-            <label className="block text-gray-700">Email</label>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        <InputField
+          label="Password"
+          type="password"
+          placeholder="Create a password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          icon={FaLock}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
+        />
 
-          <div>
-            <label className="block text-gray-700">Password</label>
-            <input
-              type="password"
-              placeholder="Enter your password"
-              className="w-full border rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        <InputField
+          label="Confirm Password"
+          type="password"
+          placeholder="Confirm your password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          icon={FaLock}
+          showPassword={showConfirmPassword}
+          setShowPassword={setShowConfirmPassword}
+        />
 
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition duration-300"
-          >
-            Register
-          </button>
-        </form>
+        <RoleSelector role={role} setRole={setRole} />
 
-        <p className="text-center text-gray-600 mt-4">
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-indigo-700 py-3.5 font-semibold
+           text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl disabled:opacity-70 
+           disabled:cursor-not-allowed"
+        >
+          {loading ? "Creating Account..." : "Create Account"}
+        </button>
+
+        <p className="text-center text-gray-600">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-600 hover:underline">
-            Login here
+          <Link
+            to="/login"
+            className="font-semibold text-blue-600 hover:underline"
+          >
+            Login
           </Link>
         </p>
-      </div>
-    </div>
+      </form>
+    </AuthLayout>
   );
 }
 
-export default register;
+export default Register;

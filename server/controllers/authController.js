@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Define allowed roles
-    const allowedRoles = ["entrepreneur", "mentor", "admin"];
+    const allowedRoles = ["entrepreneur", "mentor"];
 
     const user = await User.create({
       name,
