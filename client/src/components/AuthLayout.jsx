@@ -62,7 +62,7 @@ function AuthLayout({ title, subtitle, children }) {
               </h1>
             </div>
 
-            <div className="mb-8 text-center">
+            <div className="mb-10 text-center">
               <h2 className="text-3xl font-bold text-gray-800">{title}</h2>
 
               <p className="text-gray-500 mt-2">{subtitle}</p>

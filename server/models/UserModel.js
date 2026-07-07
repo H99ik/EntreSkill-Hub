@@ -21,6 +21,19 @@ const userSchema = new mongoose.Schema(
       minlength: 6,
     },
 
+    resetOtp: {
+      type: String,
+    },
+
+    resetOtpExpires: {
+      type: Date,
+    },
+
+    isResetOtpVerified: {
+      type: Boolean,
+      default: false,
+    },
+
     role: {
       type: String,
       enum: ["entrepreneur", "mentor", "admin"],
@@ -29,7 +42,7 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 const User = mongoose.model("User", userSchema);
