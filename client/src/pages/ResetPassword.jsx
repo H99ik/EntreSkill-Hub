@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 
 import { FaLock } from "react-icons/fa";
 
-import AuthLayout from "../components/AuthLayout";
-import InputField from "../components/InputField";
+import AuthLayout from "../components/auth/AuthLayout";
+import InputField from "../components/auth/InputField";
 import { resetPassword } from "../services/authService";
 
 function ResetPassword() {

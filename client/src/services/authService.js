@@ -54,3 +54,8 @@ export const getProfile = async (token) => {
 
   return data;
 };
+
+// Logout
+export const logoutUser = () => {
+  localStorage.removeItem("userInfo");
+};

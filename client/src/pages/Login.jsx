@@ -5,8 +5,8 @@ import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-import AuthLayout from "../components/AuthLayout";
-import InputField from "../components/InputField";
+import AuthLayout from "../components/auth/AuthLayout";
+import InputField from "../components/auth/InputField";
 import { loginUser } from "../services/AuthService";
 
 function Login() {

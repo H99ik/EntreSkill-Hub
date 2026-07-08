@@ -2,9 +2,9 @@ import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { registerUser } from "../services/authService";
-import AuthLayout from "../components/AuthLayout";
-import InputField from "../components/InputField";
-import RoleSelector from "../components/RoleSelector";
+import AuthLayout from "../components/auth/AuthLayout";
+import InputField from "../components/auth/InputField";
+import RoleSelector from "../components/auth/RoleSelector";
 import { FaUser, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 

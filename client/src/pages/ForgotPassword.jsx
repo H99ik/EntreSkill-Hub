@@ -5,8 +5,8 @@ import toast from "react-hot-toast";
 import { MdEmail } from "react-icons/md";
 import { FaLock, FaTimes, FaCopy, FaCheck } from "react-icons/fa";
 
-import AuthLayout from "../components/AuthLayout";
-import InputField from "../components/InputField";
+import AuthLayout from "../components/auth/AuthLayout";
+import InputField from "../components/auth/InputField";
 import { forgotPassword } from "../services/authService";
 
 function ForgotPassword() {

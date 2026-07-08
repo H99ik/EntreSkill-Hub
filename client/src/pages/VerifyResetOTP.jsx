@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import AuthLayout from "../components/AuthLayout";
-import OTPInput from "../components/OTPInput";
+import AuthLayout from "../components/auth/AuthLayout";
+import OTPInput from "../components/auth/OTPInput";
 import { verifyResetOtp } from "../services/authService";
 
 function VerifyResetOTP() {

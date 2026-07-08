@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyResetOTP from "./pages/VerifyResetOTP";
 import ResetPassword from "./pages/ResetPassword";
+import Profile from "./pages/Profile";
 import "./App.css";
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
         <Route path="/mentor" element={<Mentor />} />
 
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
