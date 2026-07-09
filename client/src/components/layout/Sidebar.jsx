@@ -5,7 +5,8 @@ import {
   FaLightbulb,
   FaBookOpen,
   FaUserFriends,
-  FaUser, FaSignOutAlt
+  FaUser,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { logoutUser } from "../../services/authService";
@@ -30,8 +31,8 @@ function Sidebar() {
       icon: FaHome,
     },
     {
-      name: "Ideas",
-      path: "/ideas",
+      name: "Business Ideas",
+      path: "/business-ideas",
       icon: FaLightbulb,
     },
     {

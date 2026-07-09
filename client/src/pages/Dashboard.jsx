@@ -4,6 +4,12 @@ import WelcomeCard from "../components/dashboard/WelcomeCard";
 import StatCard from "../components/dashboard/StatCard";
 import QuickActions from "../components/dashboard/QuickActions";
 import ProgressCard from "../components/dashboard/ProgressCard";
+import RecentActivityCard from "../components/dashboard/RecentActivityCard";
+import RecommendedIdeas from "../components/dashboard/RecommendedIdeas";
+import UpcomingSessions from "../components/dashboard/UpcomingSessions";
+import LearningTimeline from "../components/dashboard/LearningTimeline";
+import Achievements from "../components/dashboard/Achievements";
+
 
 import {
   FaLightbulb,
@@ -51,10 +57,20 @@ function Dashboard() {
         <QuickActions />
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 grid grid-cols-1 xl:grid-cols-2 gap-6">
         <ProgressCard />
+
+        <RecentActivityCard />
+
+        <RecommendedIdeas />
+
+        <UpcomingSessions />
+
+        <LearningTimeline />
+
+        <Achievements />
       </div>
-      
+
     </DashboardLayout>
   );
 }
