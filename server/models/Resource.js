@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const businessIdeaSchema = new mongoose.Schema(
+const resourceSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -14,25 +14,25 @@ const businessIdeaSchema = new mongoose.Schema(
       trim: true,
     },
 
+    type: {
+      type: String,
+      enum: ["Course", "Video", "PDF"],
+      required: true,
+    },
+
+    duration: {
+      type: String,
+      required: true,
+    },
+
     category: {
       type: String,
-      required: true,
+      default: "General",
     },
 
-    level: {
+    link: {
       type: String,
-      enum: ["Beginner", "Intermediate", "Advanced"],
-      required: true,
-    },
-
-    investment: {
-      type: String,
-      required: true,
-    },
-
-    skill: {
-      type: String,
-      required: true,
+      default: "",
     },
 
     isActive: {
@@ -45,4 +45,4 @@ const businessIdeaSchema = new mongoose.Schema(
   },
 );
 
-export default mongoose.model("BusinessIdea", businessIdeaSchema);
+export default mongoose.model("Resource", resourceSchema);

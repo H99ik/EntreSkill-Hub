@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getBusinessIdeas } from "../services/businessIdeaService";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import SearchBar from "../components/ideas/SearchBar";
 import FilterBar from "../components/ideas/FilterBar";
@@ -9,39 +10,21 @@ function BusinessIdeas() {
   const [category, setCategory] = useState("");
   const [level, setLevel] = useState("");
 
-  // Sample business ideas data
-  const ideas = [
-    {
-      id: 1,
-      title: "Freelance Web Development Agency",
-      category: "Technology",
-      level: "Beginner",
-      investment: "₹10,000",
-      skill: "React",
-      description:
-        "Start a web development agency by building websites and applications for small businesses.",
-    },
-    {
-      id: 2,
-      title: "Organic Farming Consultancy",
-      category: "Agriculture",
-      level: "Intermediate",
-      investment: "₹20,000",
-      skill: "Farming",
-      description:
-        "Help farmers improve crop production using modern organic farming techniques.",
-    },
-    {
-      id: 3,
-      title: "Graphic Design Studio",
-      category: "Creative",
-      level: "Beginner",
-      investment: "₹5,000",
-      skill: "Design",
-      description:
-        "Offer logo, branding, and social media design services to startups and local businesses.",
-    },
-  ];
+  // State to hold the fetched business ideas
+  const [ideas, setIdeas] = useState([]);
+
+  useEffect(() => {
+    fetchIdeas();
+  }, []);
+
+  const fetchIdeas = async () => {
+    try {
+      const response = await getBusinessIdeas();
+      setIdeas(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const filteredIdeas = ideas.filter((idea) => {
     const matchesSearch =

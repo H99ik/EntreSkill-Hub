@@ -2,35 +2,29 @@ import DashboardLayout from "../components/layout/DashboardLayout";
 import ResourceCard from "../components/resources/ResourceCard";
 import ResourceSearchBar from "../components/resources/ResourceSearchBar";
 import ResourceFilterBar from "../components/resources/ResourceFilterBar";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
+import { getResources } from "../services/resourceService";
 
 function Resources() {
   const [searchTerm, setSearchTerm] = useState("");
   const [type, setType] = useState("");
 
-  const resources = [
-    {
-      id: 1,
-      title: "Business Planning Fundamentals",
-      type: "Course",
-      duration: "2 Hours",
-      description: "Learn how to prepare a business plan from scratch.",
-    },
-    {
-      id: 2,
-      title: "Marketing Basics",
-      type: "Video",
-      duration: "45 Minutes",
-      description: "Understand digital marketing for startups.",
-    },
-    {
-      id: 3,
-      title: "Startup Funding Guide",
-      type: "PDF",
-      duration: "18 Pages",
-      description: "Complete guide to funding your startup.",
-    },
-  ];
+  // State to hold the fetched resources
+  const [resources, setResources] = useState([]);
+
+  useEffect(() => {
+    fetchResources();
+  }, []);
+
+  const fetchResources = async () => {
+    try {
+      const response = await getResources();
+      setResources(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const filteredResources = resources.filter((resource) => {
     const matchesSearch =

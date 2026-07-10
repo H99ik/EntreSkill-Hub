@@ -39,6 +39,38 @@ const userSchema = new mongoose.Schema(
       enum: ["entrepreneur", "mentor", "admin"],
       default: "entrepreneur",
     },
+
+    phone: {
+      type: String,
+      default: "",
+    },
+
+    skills: [
+      {
+        type: String,
+      },
+    ],
+
+    interests: [
+      {
+        type: String,
+      },
+    ],
+
+    startupGoal: {
+      type: String,
+      default: "",
+    },
+
+    bio: {
+      type: String,
+      default: "",
+    },
+
+    avatar: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,
