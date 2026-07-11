@@ -1,13 +1,13 @@
 import { FaCamera, FaEdit } from "react-icons/fa";
 
-function ProfileHeader({
-  user = {
-    name: "Maya",
-    role: "Entrepreneur",
-    email: "maya@entreskillhub.com",
-    avatar: "",
-  },
-}) {
+function ProfileHeader({ user, editFormRef }) {
+  const handleEditClick = () => {
+    editFormRef?.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
@@ -43,9 +43,11 @@ function ProfileHeader({
             <p className="text-gray-500 mt-2">{user.email}</p>
           </div>
         </div>
-
-        {/* Edit Button */}
-        <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition shadow-md">
+        
+        <button
+          onClick={handleEditClick}
+          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition shadow-md"
+        >
           <FaEdit />
           Edit Profile
         </button>

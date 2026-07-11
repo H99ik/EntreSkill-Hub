@@ -48,3 +48,10 @@ export const updateProfile = async (profileData) => {
 export const logoutUser = () => {
   localStorage.removeItem("userInfo");
 };
+
+// Change Password
+export const changePassword = async (passwordData) => {
+  const { data } = await API.put("/auth/change-password", passwordData);
+
+  return data;
+};

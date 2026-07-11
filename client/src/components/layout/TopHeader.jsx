@@ -1,4 +1,5 @@
 import { FaBell, FaSearch, FaUserCircle } from "react-icons/fa";
+import NotificationDropdown from "./NotificationDropdown";
 
 function TopHeader() {
   const userInfo = JSON.parse(localStorage.getItem("userInfo")) || {};
@@ -20,21 +21,10 @@ function TopHeader() {
       <div className="ml-6 flex items-center gap-5">
         {/* Notification */}
         <button className="relative rounded-xl p-3 transition hover:bg-slate-100">
-          <FaBell className="text-xl text-gray-600" />
+          <NotificationDropdown />
 
           <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500"></span>
         </button>
-
-        {/* Profile */}
-        <div className="flex items-center gap-3">
-          <FaUserCircle className="text-4xl text-blue-600" />
-
-          <div>
-            <h3 className="font-semibold">{userInfo.name}</h3>
-
-            <p className="text-sm capitalize text-gray-500">{userInfo.role}</p>
-          </div>
-        </div>
       </div>
     </header>
   );

@@ -1,5 +1,11 @@
 import DashboardLayout from "../components/layout/DashboardLayout";
-import AdminStatCard from "../components/admin/AdminStatCard";
+import StatCard from "../components/dashboard/StatCard";
+import {
+  FaUsers,
+  FaLightbulb,
+  FaBookOpen,
+  FaChalkboardTeacher,
+} from "react-icons/fa";
 
 function Admin() {
   return (
@@ -13,19 +19,33 @@ function Admin() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <AdminStatCard title="Users" value="24" color="bg-blue-600" />
+      <StatCard
+        title="Users"
+        value="24"
+        icon={<FaUsers className="text-white text-2xl" />}
+        color="bg-blue-600"
+      />
 
-        <AdminStatCard
-          title="Business Ideas"
-          value="12"
-          color="bg-emerald-600"
-        />
+      <StatCard
+        title="Business Ideas"
+        value="12"
+        icon={<FaLightbulb className="text-white text-2xl" />}
+        color="bg-emerald-600"
+      />
 
-        <AdminStatCard title="Resources" value="18" color="bg-purple-600" />
+      <StatCard
+        title="Resources"
+        value="18"
+        icon={<FaBookOpen className="text-white text-2xl" />}
+        color="bg-purple-600"
+      />
 
-        <AdminStatCard title="Mentors" value="8" color="bg-orange-500" />
-      </div>
+      <StatCard
+        title="Mentors"
+        value="8"
+        icon={<FaChalkboardTeacher className="text-white text-2xl" />}
+        color="bg-orange-500"
+      />
     </DashboardLayout>
   );
 }

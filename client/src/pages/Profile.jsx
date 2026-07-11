@@ -6,12 +6,14 @@ import EditProfileForm from "../components/profile/EditProfileForm";
 import SecurityCard from "../components/profile/SecurityCard";
 import AccountCard from "../components/profile/AccountCard";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getProfile } from "../services/authService";
 
 function Profile() {
   // State to hold the user profile data
   const [user, setUser] = useState(null);
+
+  const editFormRef = useRef(null);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -54,7 +56,7 @@ function Profile() {
       </div>
 
       {/* Profile Header */}
-      <ProfileHeader user={user} />
+      <ProfileHeader user={user} editFormRef={editFormRef} />
 
       {/* Profile Information */}
       <div className="mt-8">
@@ -62,7 +64,10 @@ function Profile() {
       </div>
 
       {/* Edit Profile + Security */}
-      <div className="mt-8 grid grid-cols-1 xl:grid-cols-2 gap-8">
+      <div
+        ref={editFormRef}
+        className="mt-8 grid grid-cols-1 xl:grid-cols-2 gap-8"
+      >
         <EditProfileForm user={user} setUser={setUser} />
 
         <SecurityCard />

@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import businessIdeaRoutes from "./routes/businessIdeaRoutes.js";
 import resourceRoutes from "./routes/resourceRoutes.js";
 import mentorRoutes from "./routes/mentorRoutes.js";
+import notificationRoutes from "./routes/notificationRoutes.js";
 
 dotenv.config();
 
@@ -22,9 +23,11 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/notifications", notificationRoutes);
 app.use("/api/business-ideas", businessIdeaRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use("/api/mentors", mentorRoutes);
+
 
 // Test route
 app.get("/", (req, res) => {
