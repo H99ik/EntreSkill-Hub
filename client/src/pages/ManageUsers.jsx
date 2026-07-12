@@ -1,36 +1,59 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../components/layout/DashboardLayout";
-import SearchBar from "../components/common/SearchBar";
+import SerchBar from "../components/ideas/SearchBar"
+import UsersTable from "../components/users/UsersTable";
+import { getAllUsers, deleteUser } from "../services/userService";
+import toast from "react-hot-toast";
 
 function ManageUsers() {
   // State
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  // ==========================
-  // API Functions
-  // ==========================
-  const fetchUsers = async () => {
-    // Backend Later
-  };
-
-  // ==========================
-  // Event Handlers
-  // ==========================
-  const handleEdit = (id) => {
-    console.log("Edit:", id);
-  };
-
-  const handleDelete = (id) => {
-    console.log("Delete:", id);
-  };
-
-  // ==========================
   // useEffect
-  // ==========================
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  // API Functions
+  const fetchUsers = async () => {
+    try {
+      const res = await getAllUsers();
+      setUsers(res.data);
+    } catch (err) {
+      toast.error("Failed to fetch users");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Event Handlers
+  const handleEdit = (user) => {
+    console.log("Edit:", user);
+  };
+
+  const handleDelete = async (user) => {
+    if (!window.confirm(`Delete ${user.name}?`)) return;
+
+    try {
+      await deleteUser(user._id);
+
+      toast.success("User deleted");
+
+      setUsers((prev) => prev.filter((u) => u._id !== user._id));
+    } catch (err) {
+      toast.error("Delete failed");
+    }
+  };
+
+  const filteredUsers = users.filter(
+    (user) =>
+      user.name.toLowerCase().includes(search.toLowerCase()) ||
+      user.email.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  if (loading) return <p className="text-center py-10">Loading users...</p>;
 
   return (
     <DashboardLayout>
@@ -46,10 +69,15 @@ function ManageUsers() {
       <SearchBar
         placeholder="Search users..."
         value={search}
-        onChange={setSearch}
+        onChange={(e)=> setSearchTerm(e.target.value)}
       />
 
       {/* Users Table */}
+      <UsersTable
+        users={filteredUsers}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
     </DashboardLayout>
   );
 }
