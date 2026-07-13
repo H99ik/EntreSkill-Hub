@@ -19,12 +19,7 @@ function TopHeader() {
 
       {/* Right Side */}
       <div className="ml-6 flex items-center gap-5">
-        {/* Notification */}
-        <button className="relative rounded-xl p-3 transition hover:bg-slate-100">
-          <NotificationDropdown />
-
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-red-500"></span>
-        </button>
+        <NotificationDropdown />
       </div>
     </header>
   );

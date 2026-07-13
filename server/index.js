@@ -7,6 +7,7 @@ import businessIdeaRoutes from "./routes/businessIdeaRoutes.js";
 import resourceRoutes from "./routes/resourceRoutes.js";
 import mentorRoutes from "./routes/mentorRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/business-ideas", businessIdeaRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use("/api/mentors", mentorRoutes);
+app.use("/api/users",userRoutes);
 
 
 // Test route

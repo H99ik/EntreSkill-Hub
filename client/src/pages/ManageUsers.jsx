@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../components/layout/DashboardLayout";
-import SerchBar from "../components/ideas/SearchBar"
+import UserSearch from "../components/admin/UserSearch";
 import UsersTable from "../components/users/UsersTable";
+import EditUserModal from "../components/users/EditUserModal";
 import { getAllUsers, deleteUser } from "../services/userService";
 import toast from "react-hot-toast";
 
@@ -10,6 +11,8 @@ function ManageUsers() {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   // useEffect
   useEffect(() => {
@@ -30,7 +33,8 @@ function ManageUsers() {
 
   // Event Handlers
   const handleEdit = (user) => {
-    console.log("Edit:", user);
+    setSelectedUser(user);
+    setIsEditOpen(true);
   };
 
   const handleDelete = async (user) => {
@@ -66,17 +70,20 @@ function ManageUsers() {
       </div>
 
       {/* Search */}
-      <SearchBar
-        placeholder="Search users..."
-        value={search}
-        onChange={(e)=> setSearchTerm(e.target.value)}
-      />
+      <UserSearch search={search} setSearch={setSearch} />
 
       {/* Users Table */}
       <UsersTable
         users={filteredUsers}
         onEdit={handleEdit}
         onDelete={handleDelete}
+      />
+
+      <EditUserModal
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        user={selectedUser}
+        onUserUpdated={fetchUsers}
       />
     </DashboardLayout>
   );

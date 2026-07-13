@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
+import ManageUsers from "./pages/ManageUsers";
 import Mentor from "./pages/Mentor";
 import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -12,6 +13,8 @@ import Profile from "./pages/Profile";
 import BusinessIdeas from "./pages/BusinessIdeas";
 import Resources from "./pages/Resources";
 import Mentors from "./pages/Mentors";
+import ManageMentors from "./pages/ManageMentors";
+import ManageResources from "./pages/ManageResources";
 import "./App.css";
 
 function App() {
@@ -31,6 +34,12 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
 
         <Route path="/admin" element={<Admin />} />
+
+        <Route path="/manage-users" element={<ManageUsers/>} />
+
+        <Route path="/manage-mentors" element={<ManageMentors />} />
+
+        <Route path="/manage-resources" element={<ManageResources/>} />
 
         <Route path="/mentor" element={<Mentor />} />
 

@@ -5,7 +5,6 @@ import {
   FaUserFriends,
   FaUser,
   FaUsers,
-  FaBell,
   FaUserTie,
 } from "react-icons/fa";
 
@@ -86,11 +85,6 @@ export const sidebarMenus = {
       name: "Business Ideas",
       path: "/manage-ideas",
       icon: FaLightbulb,
-    },
-    {
-      name: "Notifications",
-      path: "/notifications",
-      icon: FaBell,
     },
     {
       name: "Profile",
