@@ -15,6 +15,7 @@ import Resources from "./pages/Resources";
 import Mentors from "./pages/Mentors";
 import ManageMentors from "./pages/ManageMentors";
 import ManageResources from "./pages/ManageResources";
+import ManageIdeas from "./pages/ManageIdeas";
 import "./App.css";
 
 function App() {
@@ -40,6 +41,8 @@ function App() {
         <Route path="/manage-mentors" element={<ManageMentors />} />
 
         <Route path="/manage-resources" element={<ManageResources/>} />
+
+        <Route path="/manage-ideas" element={<ManageIdeas/>} />
 
         <Route path="/mentor" element={<Mentor />} />
 
