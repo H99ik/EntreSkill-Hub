@@ -6,6 +6,7 @@ import authRoutes from "./routes/authRoutes.js";
 import businessIdeaRoutes from "./routes/businessIdeaRoutes.js";
 import resourceRoutes from "./routes/resourceRoutes.js";
 import mentorRoutes from "./routes/mentorRoutes.js";
+import roadmapRoutes from "./routes/roadmapRoutes.js";
 import notificationRoutes from "./routes/notificationRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 
@@ -28,6 +29,7 @@ app.use("/api/notifications", notificationRoutes);
 app.use("/api/business-ideas", businessIdeaRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use("/api/mentors", mentorRoutes);
+app.use("/api/roadmaps", roadmapRoutes);
 app.use("/api/users",userRoutes);
 
 

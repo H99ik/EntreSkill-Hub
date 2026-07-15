@@ -9,7 +9,7 @@ import RecommendedIdeas from "../components/dashboard/RecommendedIdeas";
 import UpcomingSessions from "../components/dashboard/UpcomingSessions";
 import LearningTimeline from "../components/dashboard/LearningTimeline";
 import Achievements from "../components/dashboard/Achievements";
-
+import { useNavigate } from "react-router-dom";
 
 import {
   FaLightbulb,
@@ -19,9 +19,74 @@ import {
 } from "react-icons/fa";
 
 function Dashboard() {
+
+  const navigate = useNavigate();
+
+  const entrepreneurActions = [
+    {
+      title: "Explore Ideas",
+      path: "/business-ideas",
+      icon: <FaLightbulb className="text-blue-600" />,
+    },
+    {
+      title: "Learning Center",
+      path: "/resources",
+      icon: <FaBookOpen className="text-emerald-600" />,
+    },
+    {
+      title: "Find Mentor",
+      path: "/mentors",
+      icon: <FaUserFriends className="text-purple-600" />,
+    },
+    {
+      title: "My Progress",
+      path: "/dashboard",
+      icon: <FaChartLine className="text-orange-500" />,
+    },
+  ];
+
+  const entrepreneurActivities = [
+    {
+      id: 1,
+      title: "New Business Idea Generated",
+      description: "AI Based Grocery Delivery",
+      time: "5 min ago",
+      icon: <FaLightbulb />,
+      color: "bg-blue-100 text-blue-600",
+    },
+    {
+      id: 2,
+      title: "Resource Completed",
+      description: "Business Planning Fundamentals",
+      time: "30 min ago",
+      icon: <FaBookOpen />,
+      color: "bg-emerald-100 text-emerald-600",
+    },
+    {
+      id: 3,
+      title: "Mentor Session Booked",
+      description: "Startup Strategy Discussion",
+      time: "2 hours ago",
+      icon: <FaUserFriends />,
+      color: "bg-purple-100 text-purple-600",
+    },
+    {
+      id: 4,
+      title: "Roadmap Milestone Completed",
+      description: "Market Research",
+      time: "Today",
+      icon: <FaChartLine />,
+      color: "bg-orange-100 text-orange-600",
+    },
+  ];
+
   return (
     <DashboardLayout>
-      <WelcomeCard />
+      <WelcomeCard
+        description="Ready to transform your skills into a successful business? Continue your entrepreneurial journey today."
+        buttonText="Explore Ideas"
+        onButtonClick={() => navigate("/business-ideas")}
+      />
 
       <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         <StatCard
@@ -54,13 +119,13 @@ function Dashboard() {
       </div>
 
       <div className="mt-8">
-        <QuickActions />
+        <QuickActions actions={entrepreneurActions} />
       </div>
 
       <div className="mt-8 grid grid-cols-1 xl:grid-cols-2 gap-6">
         <ProgressCard />
 
-        <RecentActivityCard />
+        <RecentActivityCard activities={entrepreneurActivities} />
 
         <RecommendedIdeas />
 
@@ -70,7 +135,6 @@ function Dashboard() {
 
         <Achievements />
       </div>
-
     </DashboardLayout>
   );
 }

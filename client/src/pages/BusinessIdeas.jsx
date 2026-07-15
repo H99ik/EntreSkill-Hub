@@ -67,7 +67,7 @@ function BusinessIdeas() {
       {filteredIdeas.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
           {filteredIdeas.map((idea) => (
-            <IdeaCard key={idea.id} idea={idea} />
+            <IdeaCard key={idea._id} idea={idea} />
           ))}
         </div>
       ) : (

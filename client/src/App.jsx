@@ -16,6 +16,8 @@ import Mentors from "./pages/Mentors";
 import ManageMentors from "./pages/ManageMentors";
 import ManageResources from "./pages/ManageResources";
 import ManageIdeas from "./pages/ManageIdeas";
+import MyEntrepreneurs from "./pages/MyEntrepreneurs";
+import Roadmap from "./pages/Roadmap";
 import "./App.css";
 
 function App() {
@@ -36,23 +38,29 @@ function App() {
 
         <Route path="/admin" element={<Admin />} />
 
-        <Route path="/manage-users" element={<ManageUsers/>} />
+        <Route path="/manage-users" element={<ManageUsers />} />
 
         <Route path="/manage-mentors" element={<ManageMentors />} />
 
-        <Route path="/manage-resources" element={<ManageResources/>} />
+        <Route path="/manage-resources" element={<ManageResources />} />
 
-        <Route path="/manage-ideas" element={<ManageIdeas/>} />
+        <Route path="/manage-ideas" element={<ManageIdeas />} />
 
         <Route path="/mentor" element={<Mentor />} />
 
+        <Route path="/my-entrepreneurs" element={<MyEntrepreneurs />} />
+
         <Route path="/dashboard" element={<Dashboard />} />
-        
+
         <Route path="/business-ideas" element={<BusinessIdeas />} />
 
         <Route path="/resources" element={<Resources />} />
 
         <Route path="/mentors" element={<Mentors />} />
+
+        <Route path="/roadmap" element={<Roadmap />} />
+
+        <Route path="/roadmap/:id" element={<Roadmap />} />
 
         <Route path="/profile" element={<Profile />} />
       </Routes>

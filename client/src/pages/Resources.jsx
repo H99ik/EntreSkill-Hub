@@ -57,7 +57,7 @@ function Resources() {
       {filteredResources.length > 0 ? (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredResources.map((resource) => (
-            <ResourceCard key={resource.id} resource={resource} />
+            <ResourceCard key={resource._id} resource={resource} />
           ))}
         </div>
       ) : (

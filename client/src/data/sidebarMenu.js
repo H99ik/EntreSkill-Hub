@@ -6,6 +6,7 @@ import {
   FaUser,
   FaUsers,
   FaUserTie,
+  FaMapMarkedAlt,
 } from "react-icons/fa";
 
 export const sidebarMenus = {
@@ -24,6 +25,11 @@ export const sidebarMenus = {
       name: "Resources",
       path: "/resources",
       icon: FaBookOpen,
+    },
+    {
+      name: "Roadmap",
+      path: "/roadmap",
+      icon: FaMapMarkedAlt,
     },
     {
       name: "Mentors",
@@ -52,6 +58,11 @@ export const sidebarMenus = {
       name: "Resources",
       path: "/resources",
       icon: FaBookOpen,
+    },
+    {
+      name: "Roadmap",
+      path: "/roadmap",
+      icon: FaMapMarkedAlt,
     },
     {
       name: "Profile",
