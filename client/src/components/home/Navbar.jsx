@@ -17,15 +17,15 @@ function Navbar() {
             Home
           </Link>
 
-          <Link to="/" className="hover:text-blue-600">
+          <Link to="/about" className="hover:text-blue-600">
             About
           </Link>
 
-          <Link to="/" className="hover:text-blue-600">
+          <Link to="/resources" className="hover:text-blue-600">
             Resources
           </Link>
 
-          <Link to="/" className="hover:text-blue-600">
+          <Link to="/mentors" className="hover:text-blue-600">
             Mentors
           </Link>
 

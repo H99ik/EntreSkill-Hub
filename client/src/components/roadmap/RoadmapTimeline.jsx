@@ -6,7 +6,7 @@ function RoadmapTimeline({ steps }) {
       <h2 className="mb-6 text-2xl font-bold text-gray-800">Startup Journey</h2>
 
       {steps.length > 0 ? (
-        <div className="space-y-6">
+        <div className="grid gap-4 md:grid-cols-2">
           {steps.map((step, index) => (
             <RoadmapStep key={index} step={step} />
           ))}

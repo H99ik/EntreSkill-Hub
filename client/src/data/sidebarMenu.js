@@ -60,6 +60,11 @@ export const sidebarMenus = {
       icon: FaBookOpen,
     },
     {
+      name: "Manage Resources",
+      path: "/manage-resources",
+      icon: FaBookOpen,
+    },
+    {
       name: "Roadmap",
       path: "/roadmap",
       icon: FaMapMarkedAlt,

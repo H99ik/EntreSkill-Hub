@@ -18,6 +18,10 @@ import ManageResources from "./pages/ManageResources";
 import ManageIdeas from "./pages/ManageIdeas";
 import MyEntrepreneurs from "./pages/MyEntrepreneurs";
 import Roadmap from "./pages/Roadmap";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import About from "./pages/About";
+import LearningResources from "./pages/LearningResources";
+import MentorDirectory from "./pages/MentorDirectory";
 import "./App.css";
 
 function App() {
@@ -25,6 +29,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/about" element={<About />} />
+
+        <Route path="/resources" element={<LearningResources />} />
+
+        <Route path="/mentors" element={<MentorDirectory />} />
 
         <Route path="/login" element={<Login />} />
 
@@ -36,27 +46,97 @@ function App() {
 
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <Admin />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/manage-users" element={<ManageUsers />} />
+        <Route
+          path="/manage-users"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <ManageUsers />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/manage-mentors" element={<ManageMentors />} />
+        <Route
+          path="/manage-mentors"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <ManageMentors />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/manage-resources" element={<ManageResources />} />
+        <Route
+          path="/manage-resources"
+          element={
+            <ProtectedRoute allowedRoles={["admin", "mentor"]}>
+              <ManageResources />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/manage-ideas" element={<ManageIdeas />} />
+        <Route
+          path="/manage-ideas"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <ManageIdeas />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/mentor" element={<Mentor />} />
+        <Route
+          path="/mentor"
+          element={
+            <ProtectedRoute allowedRoles={["mentor"]}>
+              <Mentor />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/my-entrepreneurs" element={<MyEntrepreneurs />} />
+        <Route
+          path="/my-entrepreneurs"
+          element={
+            <ProtectedRoute allowedRoles={["mentor"]}>
+              <MyEntrepreneurs />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur"]}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/business-ideas" element={<BusinessIdeas />} />
+        <Route
+          path="/business-ideas"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur"]}>
+              <BusinessIdeas />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/mentors"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur"]}>
+              <Mentors />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="/resources" element={<Resources />} />
-
-        <Route path="/mentors" element={<Mentors />} />
 
         <Route path="/roadmap" element={<Roadmap />} />
 

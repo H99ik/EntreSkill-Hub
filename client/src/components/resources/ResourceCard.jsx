@@ -27,10 +27,24 @@ function ResourceCard({ resource }) {
         <div className="mt-6 flex justify-between items-center">
           <span className="text-sm text-gray-500">{resource.duration}</span>
 
-          <button className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800">
-            Learn
-            <FaArrowRight />
-          </button>
+          {resource.link ? (
+            <button
+              onClick={() =>
+                window.open(resource.link, "_blank", "noopener,noreferrer")
+              }
+              className="flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-800"
+            >
+              Learn More
+              <FaArrowRight />
+            </button>
+          ) : (
+            <button
+              disabled
+              className="flex items-center gap-2 text-gray-400 font-semibold cursor-not-allowed"
+            >
+              No Link
+            </button>
+          )}
         </div>
       </div>
     </div>
