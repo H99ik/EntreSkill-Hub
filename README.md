@@ -278,7 +278,7 @@ Major Project – MERN Stack
 
 # 📄 License
 
-This project was developed for educational purposes as a Bachelor's Engineering Major Project.
+This project was developed as part of an internship project for educational and learning purposes. It demonstrates the implementation of a full-stack MERN application using modern web development technologies.
 
 ---
 
