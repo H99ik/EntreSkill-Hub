@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -18,33 +19,33 @@ import ManageResources from "./pages/ManageResources";
 import ManageIdeas from "./pages/ManageIdeas";
 import MyEntrepreneurs from "./pages/MyEntrepreneurs";
 import Roadmap from "./pages/Roadmap";
+
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+
 import About from "./pages/About";
 import LearningResources from "./pages/LearningResources";
 import MentorDirectory from "./pages/MentorDirectory";
+
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* ================= PUBLIC WEBSITE ================= */}
+
         <Route path="/" element={<Home />} />
-
         <Route path="/about" element={<About />} />
-
         <Route path="/resources" element={<LearningResources />} />
-
         <Route path="/mentors" element={<MentorDirectory />} />
 
         <Route path="/login" element={<Login />} />
-
         <Route path="/register" element={<Register />} />
-
         <Route path="/forgot-password" element={<ForgotPassword />} />
-
         <Route path="/verify-reset-otp" element={<VerifyResetOTP />} />
-
         <Route path="/reset-password" element={<ResetPassword />} />
+
+        {/* ================= ADMIN ================= */}
 
         <Route
           path="/admin"
@@ -91,8 +92,10 @@ function App() {
           }
         />
 
+        {/* ================= MENTOR ================= */}
+
         <Route
-          path="/mentor"
+          path="/dashboard/mentor"
           element={
             <ProtectedRoute allowedRoles={["mentor"]}>
               <Mentor />
@@ -108,6 +111,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* ================= ENTREPRENEUR ================= */}
 
         <Route
           path="/dashboard"
@@ -128,7 +133,16 @@ function App() {
         />
 
         <Route
-          path="/mentors"
+          path="/dashboard/resources"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur"]}>
+              <Resources />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/mentors"
           element={
             <ProtectedRoute allowedRoles={["entrepreneur"]}>
               <Mentors />
@@ -136,13 +150,32 @@ function App() {
           }
         />
 
-        <Route path="/resources" element={<Resources />} />
+        <Route
+          path="/roadmap"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur", "mentor"]}>
+              <Roadmap />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/roadmap" element={<Roadmap />} />
+        <Route
+          path="/roadmap/:id"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur", "mentor"]}>
+              <Roadmap />
+            </ProtectedRoute>
+          }
+        />
 
-        <Route path="/roadmap/:id" element={<Roadmap />} />
-
-        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute allowedRoles={["entrepreneur", "mentor", "admin"]}>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
