@@ -18,7 +18,12 @@ connectDB();
 const app = express();
 
 // Enable CORS
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://entre-skill-hub-mu.vercel.app"],
+    credentials: true,
+  }),
+);
 
 //middleware
 app.use(express.json());
@@ -30,8 +35,7 @@ app.use("/api/business-ideas", businessIdeaRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use("/api/mentors", mentorRoutes);
 app.use("/api/roadmaps", roadmapRoutes);
-app.use("/api/users",userRoutes);
-
+app.use("/api/users", userRoutes);
 
 // Test route
 app.get("/", (req, res) => {
