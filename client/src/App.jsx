@@ -36,8 +36,8 @@ function App() {
 
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/resources" element={<LearningResources />} />
-        <Route path="/mentors" element={<MentorDirectory />} />
+        <Route path="/learning-resources" element={<LearningResources />} />
+        <Route path="/mentor-directory" element={<MentorDirectory />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
