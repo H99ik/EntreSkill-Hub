@@ -21,11 +21,11 @@ function Navbar() {
             About
           </Link>
 
-          <Link to="/resources" className="hover:text-blue-600">
+          <Link to="/learning-resources" className="hover:text-blue-600">
             Resources
           </Link>
 
-          <Link to="/mentors" className="hover:text-blue-600">
+          <Link to="/mentor-directory" className="hover:text-blue-600">
             Mentors
           </Link>
 
