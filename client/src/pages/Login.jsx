@@ -7,7 +7,7 @@ import { MdEmail } from "react-icons/md";
 
 import AuthLayout from "../components/auth/AuthLayout";
 import InputField from "../components/auth/InputField";
-import { loginUser } from "../services/AuthService";
+import { loginUser } from "../services/authService";
 
 function Login() {
   // navigate hook to redirect after login
