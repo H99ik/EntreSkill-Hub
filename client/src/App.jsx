@@ -126,7 +126,7 @@ function App() {
         <Route
           path="/business-ideas"
           element={
-            <ProtectedRoute allowedRoles={["entrepreneur"]}>
+            <ProtectedRoute allowedRoles={["entrepreneur","mentor"]}>
               <BusinessIdeas />
             </ProtectedRoute>
           }
@@ -135,7 +135,7 @@ function App() {
         <Route
           path="/resources"
           element={
-            <ProtectedRoute allowedRoles={["entrepreneur"]}>
+            <ProtectedRoute allowedRoles={["entrepreneur","mentor"]}>
               <Resources />
             </ProtectedRoute>
           }
