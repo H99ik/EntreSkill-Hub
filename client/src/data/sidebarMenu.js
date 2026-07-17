@@ -23,7 +23,7 @@ export const sidebarMenus = {
     },
     {
       name: "Resources",
-      path: "/dashboard/resources",
+      path: "/resources",
       icon: FaBookOpen,
     },
     {
@@ -33,7 +33,7 @@ export const sidebarMenus = {
     },
     {
       name: "Mentors",
-      path: "/dashboard/mentors",
+      path: "/mentors",
       icon: FaUserFriends,
     },
     {
@@ -46,7 +46,7 @@ export const sidebarMenus = {
   mentor: [
     {
       name: "Dashboard",
-      path: "/dashboard/mentor",
+      path: "/mentor",
       icon: FaHome,
     },
     {
@@ -56,7 +56,7 @@ export const sidebarMenus = {
     },
     {
       name: "Resources",
-      path: "/dashboard/resources",
+      path: "/resources",
       icon: FaBookOpen,
     },
     {

@@ -95,7 +95,7 @@ function App() {
         {/* ================= MENTOR ================= */}
 
         <Route
-          path="/dashboard/mentor"
+          path="/mentor"
           element={
             <ProtectedRoute allowedRoles={["mentor"]}>
               <Mentor />
@@ -133,7 +133,7 @@ function App() {
         />
 
         <Route
-          path="/dashboard/resources"
+          path="/resources"
           element={
             <ProtectedRoute allowedRoles={["entrepreneur"]}>
               <Resources />
@@ -142,7 +142,7 @@ function App() {
         />
 
         <Route
-          path="/dashboard/mentors"
+          path="/mentors"
           element={
             <ProtectedRoute allowedRoles={["entrepreneur"]}>
               <Mentors />
