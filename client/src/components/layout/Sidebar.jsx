@@ -15,9 +15,6 @@ import { sidebarMenus } from "../../data/sidebarMenu";
 function Sidebar() {
   const navigate = useNavigate();
 
-  // Mobile Menu
-  const [isOpen, setIsOpen] = useState(false);
-
   // Profile Dropdown
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 

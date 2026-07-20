@@ -2,13 +2,14 @@ import Sidebar from "./Sidebar";
 import TopHeader from "./TopHeader";
 
 function DashboardLayout({ children }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-100">
-      
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} setIsOpen={setIsSidebarOpen} />
 
-      <main className="ml-72 p-8">
-        <TopHeader />
+      <main className="p-4 lg:ml-72 lg:p-8 transition-all duration-300">
+        <TopHeader setIsOpen={setIsSidebarOpen} />
         {children}
       </main>
     </div>
